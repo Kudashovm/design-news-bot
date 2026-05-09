@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# MacOS
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# SQLite
+*.sqlite3
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Temporary files
+tmp/
+temp/
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/Kudashovm/design-news-bot
+git branch -M main
+git push -u origin main
