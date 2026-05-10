@@ -30,32 +30,22 @@ import trafilatura
 SOURCES = {
     "Дизайн": [
         ("Dezeen",             "https://www.dezeen.com/feed/"),
-        ("It's Nice That",     "https://www.itsnicethat.com/rss"),
+        ("Lemanoosh",          "https://lemanoosh.com/rss"),
         ("Designboom",         "https://www.designboom.com/feed/"),
         ("Creative Review",    "https://www.creativereview.co.uk/feed/"),
         ("Brand New",          "https://www.underconsideration.com/brandnew/atom.xml"),
-        ("Eye on Design",      "https://eyeondesign.aiga.org/feed/"),
         ("Print Magazine",     "https://www.printmag.com/feed/"),
-        ("Communication Arts", "https://www.commarts.com/rss/all"),  # ?
         ("Slanted",            "https://www.slanted.de/feed/"),
-        ("Pentagram",          "https://www.pentagram.com/feed/"),   # ?
-        ("Wallpaper*",         "https://www.wallpaper.com/feed"),    # ?
     ],
     "Типографика": [
-        ("Fonts In Use",      "https://fontsinuse.com/all.atom"),
         ("Typewolf",          "https://www.typewolf.com/feed"),
         ("I Love Typography", "https://ilovetypography.com/feed/"),
         ("Alphabettes",       "https://www.alphabettes.org/feed/"),
-        ("Klim Type",         "https://klim.co.nz/blog/feed/"),  # ?
     ],
     "Студии и блоги": [
         ("Sidebar.io",          "https://sidebar.io/feed.xml"),
-        ("Frank Chimero",       "https://frankchimero.com/feed/"),     # ?
-        ("Khoi Vinh",           "https://www.subtraction.com/feed/"),  # ?
         ("Илья Бирман",         "https://ilyabirman.ru/meanwhile/rss/"),
         ("Артемий Лебедев",     "https://tema.livejournal.com/data/rss"),
-        ("Студия Лебедева",     "https://www.artlebedev.ru/rss.xml"),  # ?
-        ("Юрий Ветров",         "https://jvetrau.com/feed/"),          # ?
     ],
     "Архитектура": [
         ("ArchDaily",            "https://www.archdaily.com/feed"),
@@ -74,19 +64,14 @@ SOURCES = {
         ("Hyperallergic",     "https://hyperallergic.com/feed/"),
         ("Colossal",          "https://www.thisiscolossal.com/feed/"),
         ("ARTnews",           "https://www.artnews.com/feed/"),
-        ("The Art Newspaper", "https://www.theartnewspaper.com/rss"),  # ?
         ("Juxtapoz",          "https://www.juxtapoz.com/news?format=feed"),
-        ("Artsy",             "https://www.artsy.net/rss/news"),       # ?
-        ("Артгид",            "https://artguide.com/rss"),             # ?
-        ("Colta",             "https://www.colta.ru/feed"),            # ?
-        ("The Blueprint",     "https://theblueprint.ru/rss"),          # ?
+        ("Artsy",             "https://www.artsy.net/rss/news"),       
+        ("Colta",             "https://www.colta.ru/feed"),            
+        ("The Blueprint",     "https://theblueprint.ru/rss"),          
     ],
     "Русский дизайн": [
-        ("VC Дизайн",           "https://vc.ru/design/rss"),
         ("Хабр Дизайн",         "https://habr.com/ru/rss/hub/design/?fl=ru"),
-        ("Awdee",               "https://awdee.ru/feed/"),               # ?
-        ("Дизайн-кабак",        "https://designcabak.ru/feed/"),         # ?
-        ("Bang Bang Education", "https://bangbangeducation.ru/feed/"),   # ?
+        ("Awdee",               "https://awdee.ru/feed/"),               
     ],
     "Кино": [
         ("IndieWire",         "https://www.indiewire.com/feed/"),
