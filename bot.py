@@ -398,7 +398,7 @@ def format_regular_post(weekday, source, parsed, link):
         f"💡 {html.escape(parsed['value'])}\n\n"
         f"<i>{html.escape(source)} · {html.escape(label)}</i>\n\n"
         f"{html.escape(tags)}\n\n"
-        f"🔗 {link}"
+        f'🔗 <a href="{link}">Источник</a>'
     )
 
 
@@ -410,7 +410,7 @@ def format_friday_post(parsed, events, links):
             f"\n▪️ <b>{html.escape(ev['name'])}</b>\n"
             f"{html.escape(ev['oneliner'])}\n"
             f"→ {html.escape(ev.get('why', ''))}"
-            + (f"\n🔗 {link}" if link else "")
+            + (f'\n🔗 <a href="{link}">Источник</a>' if link else "")
         )
     tags = DAY_HASHTAGS.get(4, "")
     parts.append(f"\n\n{html.escape(tags)}")
