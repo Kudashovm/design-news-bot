@@ -124,8 +124,7 @@ DAILY_CATEGORIES = {
     2: ["Студии и блоги", "Искусство", "Фото"],
     3: ["ИИ в дизайне"],
     4: ["Москва события"],          # пятница — подборка событий
-    5: ["Туториалы"],
-    6: ["Индустриальный дизайн"],  
+    5: ["Туториалы"], 
 }
 
 CATEGORY_EMOJI = {
@@ -684,9 +683,9 @@ def main():
     weekday = msk.weekday()
     print(f"Сегодня: {msk.strftime('%A %d.%m.%Y')}, день {weekday}")
 
- #   if weekday == 6:
-  #      print("Воскресенье — выходной, бот не постит.")
-  #      return
+    if weekday == 6:
+        print("Воскресенье — выходной, бот не постит.")
+        return
 
     if weekday not in DAILY_CATEGORIES:
         print(f"Нет рубрик для дня {weekday}.")
