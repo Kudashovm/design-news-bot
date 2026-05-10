@@ -34,7 +34,7 @@ from PIL import Image, ImageDraw, ImageFont
 #  НАСТРОЙКИ КАНАЛА
 # ═══════════════════════════════════════════════════════════════
 # Поменяй на название своего канала — оно будет на плашке каждой картинки.
-CHANNEL_NAME = "Design Feed"
+CHANNEL_NAME = "Цифровая звонница"
 
 # Цвета брендинга канала (используются в плашке и карточках)
 BRAND_COLOR    = (30, 30, 30)       # тёмный фон плашки
@@ -57,14 +57,15 @@ SOURCES = {
     ],
     "Брендинг": [
         ("Brand New",              "https://www.underconsideration.com/brandnew/atom.xml"),
-        ("Pentagram",              "https://www.pentagram.com/feed/"),
+        ("Pentagram",              "https://rss.app/feeds/U0jCQWBCdgNwZ7VZ.xml"),
         ("Packaging of the World", "https://packagingoftheworld.com/feeds/posts/default?alt=rss"),
         ("Design Collector",       "https://designcollector.net/feed/"),
+        ("Агрегатор креатива",     "https://rss.app/feeds/_jM8eKwwKpKeaj2DE.xml"),
     ],
     "Интерфейсы": [
         ("Smashing Magazine", "https://www.smashingmagazine.com/feed/"),
         ("Codrops",           "https://tympanus.net/codrops/feed/"),
-        ("Awwwards",          "https://www.awwwards.com/blog/feed/"),
+        ("Awwwards",          "https://rss.app/feeds/jOgzZtcN0KJqYc2m.xml"),
         ("DesignBoard",       "https://rsshub.app/telegram/channel/DesignBoard"),
     ],
     "3D и моушен": [
