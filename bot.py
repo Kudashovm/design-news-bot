@@ -292,7 +292,6 @@ def add_visual_frame(img, category, source=""):
     draw = ImageDraw.Draw(img, "RGBA")
     w, h = img.size
     color = CATEGORY_COLOR.get(category, (88, 110, 117))
-    emoji = CATEGORY_EMOJI.get(category, "•")
 
     draw.rectangle([0, 0, w, 20], fill=color)
 
@@ -305,8 +304,9 @@ def add_visual_frame(img, category, source=""):
     font_label = get_font(28, bold=True)
     font_small = get_font(20, bold=False)
 
-    label_text = f"{emoji}  {category}"
-    draw.text((24, h - 60), label_text, font=font_label, fill=(255, 255, 255, 240))
+    dot_y = h - 50
+    draw.ellipse([24, dot_y, 40, dot_y + 16], fill=color)
+    draw.text((50, h - 60), category, font=font_label, fill=(255, 255, 255, 240))
     draw.text((w - 24, h - 55), CHANNEL_NAME, font=font_small,
               fill=(255, 255, 255, 160), anchor="ra")
     if source:
@@ -350,7 +350,8 @@ def generate_friday_card(title, events):
         font_desc  = get_font(20, bold=False)
         font_small = get_font(18, bold=False)
 
-        draw.text((48, 40), f"📍  {title}", font=font_title, fill=(255, 255, 255))
+        draw.ellipse([48, 55, 68, 75], fill=accent)
+        draw.text((78, 40), title, font=font_title, fill=(255, 255, 255))
 
         y = 120
         for i, ev in enumerate(events[:5]):
