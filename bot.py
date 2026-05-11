@@ -702,10 +702,16 @@ def tg_send_text(token, chat_id, text):
 
 
 def post_to_telegram(token, chat_id, text, image_bytes=None):
-    caption = text if len(text) <= 1024 else text[:1020] + "..."
-    if image_bytes:
-        if tg_send_photo_bytes(token, chat_id, image_bytes, caption):
+    """Если текст влезает в caption (1024) — фото + подпись.
+       Если нет — сначала фото без подписи, потом текст отдельно."""
+    if image_bytes and len(text) <= 1024:
+        if tg_send_photo_bytes(token, chat_id, image_bytes, text):
             return True
+
+    if image_bytes and len(text) > 1024:
+        tg_send_photo_bytes(token, chat_id, image_bytes, "")
+        return tg_send_text(token, chat_id, text)
+
     return tg_send_text(token, chat_id, text)
 
 
