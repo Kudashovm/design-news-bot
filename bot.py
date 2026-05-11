@@ -338,8 +338,8 @@ def add_visual_frame(img, category, source=""):
     color = CATEGORY_COLOR.get(category, (88, 110, 117))
     emoji = CATEGORY_EMOJI.get(category, "•")
 
-    # Цветная полоска сверху (4px)
-    draw.rectangle([0, 0, w, 4], fill=color)
+    # Цветная полоска сверху (20px)
+    draw.rectangle([0, 0, w, 20], fill=color)
 
     # Градиент снизу (120px)
     grad_h = 120
