@@ -637,6 +637,28 @@ JSON БЕЗ ```:
 """.replace("{voice}", VOICE_RULES)
 
 
+SUMMARY_PROMPT = """Ты редактор русскоязычного телеграм-канала о дизайне. Напиши пятничное саммари — итоги недели.
+{voice}
+
+ЗАДАЧА: на основе списка материалов, опубликованных за неделю, напиши короткое и ёмкое резюме.
+
+СТРУКТУРА:
+1. Заголовок: 30-60 символов, с характером. Не «Итоги недели», а что-то живое.
+2. Обзор: 3-5 предложений — что было главного, какие темы доминировали, что запомнилось.
+3. Топ-3: три самых интересных материала недели — по одному предложению на каждый.
+
+ПРАВИЛА:
+- Не выдумывай. Только то, что в списке.
+- До 600 символов.
+
+JSON БЕЗ ```:
+{{"title": "...", "overview": "...", "top3": [{{"name": "...", "why": "..."}}]}}
+
+МАТЕРИАЛЫ НЕДЕЛИ:
+{items}
+""".replace("{voice}", VOICE_RULES)
+
+
 def extract_json(text):
     text = text.strip()
     text = re.sub(r"^```(?:json)?\s*", "", text)
@@ -1046,6 +1068,9 @@ def run_pinterest_album(token, chat_id, weekday, state):
 # ═══════════════════════════════════════════════════════════════
 def run_morning(token, chat_id, client, weekday, state):
     if weekday == 4:
+        # Пятница утро: сначала саммари недели, потом события
+        run_weekly_summary(token, chat_id, client, state)
+        time.sleep(5)  # пауза между постами
         return run_friday(token, chat_id, client, state)
 
     categories = DAILY_CATEGORIES[weekday]
@@ -1087,9 +1112,65 @@ def run_morning(token, chat_id, client, weekday, state):
 
         if post_to_telegram(token, chat_id, text, cover):
             state["sent"].append(item["id"])
+            # Накапливаем для пятничного саммари
+            state.setdefault("weekly", []).append({
+                "title": parsed.get("title", item["title"]),
+                "source": item["source"],
+                "category": item["category"],
+                "link": item["link"],
+            })
             print("    ✓ опубликовано")
             return True
         print("    ✗ ошибка отправки")
+    return False
+
+
+# ═══════════════════════════════════════════════════════════════
+#  ПЯТНИЧНОЕ САММАРИ НЕДЕЛИ
+# ═══════════════════════════════════════════════════════════════
+def format_summary_post(parsed):
+    parts = [
+        f"<b>📊 {html.escape(parsed['title'])}</b>",
+        "",
+        html.escape(parsed['overview']),
+        "",
+        "<b>Топ-3 недели:</b>",
+    ]
+    for i, item in enumerate(parsed.get("top3", []), 1):
+        parts.append(f"{i}. <b>{html.escape(item['name'])}</b> — {html.escape(item['why'])}")
+    parts.append("")
+    parts.append("#итогинедели #дизайн")
+    return "\n".join(parts)
+
+
+def run_weekly_summary(token, chat_id, client, state):
+    """Пятничный пост: саммари за неделю из накопленных материалов."""
+    weekly = state.get("weekly", [])
+    if not weekly:
+        print("Саммари: нет материалов за неделю.")
+        return False
+
+    print(f"Саммари: {len(weekly)} материалов за неделю")
+
+    items_text = ""
+    for i, item in enumerate(weekly, 1):
+        cat = item.get("category", "")
+        items_text += f"{i}. [{item['source']} · {cat}] {item['title']}\n   {item.get('link', '')}\n"
+
+    try:
+        parsed = call_claude(client, SUMMARY_PROMPT.format(items=items_text))
+    except Exception as e:
+        print(f"  Claude: {e}")
+        return False
+
+    text = format_summary_post(parsed)
+    ok = tg_send_text(token, chat_id, text)
+
+    if ok:
+        state["weekly"] = []  # очищаем после публикации
+        print("  ✓ саммари опубликовано")
+        return True
+    print("  ✗ ошибка отправки саммари")
     return False
 
 
