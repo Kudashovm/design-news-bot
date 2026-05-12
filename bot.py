@@ -65,9 +65,10 @@ SOURCES = {
         ("Awwwards",            "https://rss.app/feeds/jOgzZtcN0KJqYc2m.xml"),
         ("Figma",               "https://rss.app/feeds/qZ4WFeenR3uo0All.xml"),
         ("Microsoft Design",    "https://rss.app/feeds/tdhEU2RBJNDa4e3K.xml"),
+        ("Yandex Design",       "https://rss.app/feeds/3wZPUUx2ACQbsthN.xml"),
     ],
     "Пром дизайн": [
-        ("Yandex Design",       "https://rss.app/feeds/3wZPUUx2ACQbsthN.xml"),
+        # Добавь источники: Dezeen, Designboom, Yanko Design, Core77 и т.д.
     ],
     "3D и моушен": [
         ("FIELD.IO",            "https://rss.app/feeds/DJHMIPnkYMtKm4bA.xml"),
@@ -167,14 +168,30 @@ DAY_LABEL = {
     5: "Разбор проекта",
 }
 
-DAY_HASHTAGS = {
-    0: "#типографика #брендинг #графдизайн #3d",
-    1: "#интерфейсы #промдизайн #ux",
-    2: "#дизайнстудии #искусство",
-    3: "#ии #нейросети #дизайн",
-    4: "#москва #выставки #дизайнсобытия",
-    5: "#разбор #дизайн #кейс",
+CATEGORY_HASHTAGS = {
+    "Типографика":               "#типографика #шрифты",
+    "Брендинг и граф дизайн":    "#брендинг #графдизайн #айдентика",
+    "Интерфейсы":                "#интерфейсы #ux #ui",
+    "Пром дизайн":               "#промдизайн #индустриальныйдизайн",
+    "3D и моушен":               "#3d #моушен #анимация",
+    "Студии и блоги":            "#дизайнстудии #креатив",
+    "Искусство":                 "#искусство #арт",
+    "ИИ в дизайне":              "#ии #нейросети #дизайн",
+    "Москва события":            "#москва #выставки #дизайнсобытия",
 }
+
+
+def get_tags_for_categories(categories):
+    """Собирает хэштеги из нескольких категорий без дублей."""
+    all_tags = []
+    seen = set()
+    for cat in categories:
+        tags_str = CATEGORY_HASHTAGS.get(cat, "")
+        for tag in tags_str.split():
+            if tag and tag not in seen:
+                seen.add(tag)
+                all_tags.append(tag)
+    return " ".join(all_tags)
 
 CATEGORY_COLOR = {
     "Типографика":               (220, 50, 47),
@@ -641,9 +658,9 @@ def call_claude(client, prompt):
 # ═══════════════════════════════════════════════════════════════
 #  ФОРМАТИРОВАНИЕ
 # ═══════════════════════════════════════════════════════════════
-def format_regular_post(weekday, source, parsed, link):
+def format_regular_post(weekday, category, source, parsed, link):
     label = DAY_LABEL.get(weekday, "")
-    tags  = DAY_HASHTAGS.get(weekday, "")
+    tags  = CATEGORY_HASHTAGS.get(category, "")
     trend = parsed.get("trend", "").strip()
 
     parts = [
@@ -663,8 +680,8 @@ def format_regular_post(weekday, source, parsed, link):
     return "\n".join(parts)
 
 
-def format_saturday_post(source, parsed, link):
-    tags = DAY_HASHTAGS.get(5, "")
+def format_saturday_post(category, source, parsed, link):
+    tags = CATEGORY_HASHTAGS.get(category, "#разбор #дизайн")
     return "\n".join([
         f"<b>🔍 {html.escape(parsed['title'])}</b>",
         "",
@@ -685,7 +702,8 @@ def format_saturday_post(source, parsed, link):
 
 def format_digest_post(weekday, parsed, items_data):
     label = DAY_LABEL.get(weekday, "")
-    tags  = DAY_HASHTAGS.get(weekday, "")
+    cats  = list(dict.fromkeys(it.get("category", "") for it in items_data))
+    tags  = get_tags_for_categories(cats)
     trend = parsed.get("trend", "").strip()
 
     parts = [f"<b>📋 {html.escape(parsed['title'])}</b>", ""]
@@ -716,7 +734,7 @@ def format_friday_post(parsed, events):
             + (f'\n🔗 <a href="{link}">Подробнее</a>' if link else "")
         )
         parts.append("")
-    parts.append(html.escape(DAY_HASHTAGS.get(4, "")))
+    parts.append(html.escape(CATEGORY_HASHTAGS.get("Москва события", "")))
     return "\n".join(parts)
 
 
@@ -973,7 +991,8 @@ def run_pinterest_album(token, chat_id, weekday, state):
 
     selected = pinterest_items[:PINTEREST_ALBUM_SIZE]
 
-    tags = DAY_HASHTAGS.get(weekday, "")
+    day_cats = DAILY_CATEGORIES.get(weekday, [])
+    tags = get_tags_for_categories(day_cats)
     label = DAY_LABEL.get(weekday, "")
     boards_used = list(dict.fromkeys(it["source"] for it in selected))
     boards_str = " · ".join(boards_used[:3])
@@ -1053,11 +1072,11 @@ def run_morning(token, chat_id, client, weekday, state):
             if is_saturday:
                 parsed = call_claude(client, SATURDAY_PROMPT.format(
                     title=item["title"], content=content[:4000], source=item["source"]))
-                text = format_saturday_post(item["source"], parsed, item["link"])
+                text = format_saturday_post(item["category"], item["source"], parsed, item["link"])
             else:
                 parsed = call_claude(client, REWRITE_PROMPT.format(
                     title=item["title"], content=content[:4000], source=item["source"]))
-                text = format_regular_post(weekday, item["source"], parsed, item["link"])
+                text = format_regular_post(weekday, item["category"], item["source"], parsed, item["link"])
         except Exception as e:
             print(f"    Claude: {e}")
             continue
