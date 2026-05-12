@@ -73,7 +73,6 @@ SOURCES = {
     ],
     "Студии и блоги": [
         ("It's Nice That",       "https://rss.app/feeds/pcows50evH5Tfy47.xml"),
-        ("Илья Бирман",          "https://ilyabirman.ru/meanwhile/rss/"),
         ("HERE CREATIVE",        "https://rss.app/feeds/UgcHtGU4juOnCUjL.xml"),
         ("Kiln",                 "https://rss.app/feeds/8Jf34QpsLnK6LvDQ.xml"),
         ("Enigma",               "https://rss.app/feeds/8zTXqqbnCfIuXkZ8.xml"),
@@ -81,6 +80,7 @@ SOURCES = {
         ("DOT4",                 "https://rss.app/feeds/AIJ37uxt0OkEFAZh.xml"),
         ("Nick Medukha",         "https://rss.app/feeds/CJfklfcm1dXrO0Rt.xml"),
         ("Fresh Air Design",     "https://rss.app/feeds/Co8ReXRqg6WfhZFR.xml"),
+        ("Davar Azarbeygui",     "https://rss.app/feeds/V25ZpIm30VVuQzfz.xml"),
     ],
     "Искусство": [
         ("The Blueprint",     "https://rss.app/feeds/uAnx817uSfagXw9u.xml"),
