@@ -864,7 +864,7 @@ def detect_media_type(url):
     if low.endswith((".mp4", ".mov", ".webm")):
         return "video"
     if low.endswith(".gif"):
-        return "animation"
+        return "video"   # Telegram конвертит GIF в видео в альбомах
     return "photo"
 
 
@@ -885,14 +885,25 @@ def collect_pinterest(weekday, state):
                 if not item_id or item_id in sent_ids:
                     continue
                 image = extract_image_url(entry)
-                if not image and entry.get("link"):
-                    image = fetch_og_image(entry.get("link", ""))
-                if image:
+                video = None
+                # Ищем видео в enclosures и media:content
+                for enc in entry.get("enclosures", []):
+                    if enc.get("type", "").startswith("video"):
+                        video = enc.get("href") or enc.get("url")
+                        break
+                for mc in entry.get("media_content", []):
+                    if mc.get("type", "").startswith("video"):
+                        video = mc.get("url")
+                        break
+                media_url = video or image
+                if not media_url and entry.get("link"):
+                    media_url = fetch_og_image(entry.get("link", ""))
+                if media_url:
                     author = extract_author(entry)
                     items.append({
                         "id": item_id,
-                        "image": image,
-                        "media_type": detect_media_type(image),
+                        "image": media_url,
+                        "media_type": detect_media_type(media_url),
                         "source": name,
                         "link": entry.get("link", ""),
                         "author": author,
@@ -903,7 +914,7 @@ def collect_pinterest(weekday, state):
 
 
 def tg_send_media_group_raw(token, chat_id, media_items, caption=""):
-    """Отправляет альбом по URL без обработки. Поддерживает photo/video/animation."""
+    """Отправляет альбом по URL без обработки. Поддерживает photo и video."""
     if not media_items:
         return False
     try:
@@ -922,7 +933,18 @@ def tg_send_media_group_raw(token, chat_id, media_items, caption=""):
         )
         if r.ok:
             return True
-        print(f"    sendMediaGroup: {r.text[:200]}")
+        # Фоллбэк: если смешанные типы не сработали — всё как photo
+        print(f"    sendMediaGroup попытка 1: {r.text[:150]}")
+        for m in media:
+            m["type"] = "photo"
+        r = requests.post(
+            f"https://api.telegram.org/bot{token}/sendMediaGroup",
+            data={"chat_id": chat_id, "media": json.dumps(media)},
+            timeout=60,
+        )
+        if r.ok:
+            return True
+        print(f"    sendMediaGroup попытка 2: {r.text[:150]}")
     except Exception as e:
         print(f"    sendMediaGroup: {e}")
     return False
