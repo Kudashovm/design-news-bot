@@ -331,26 +331,33 @@ def add_visual_frame(img, category, source=""):
     draw = ImageDraw.Draw(img, "RGBA")
     w, h = img.size
     color = CATEGORY_COLOR.get(category, (88, 110, 117))
+    border = 20
 
-    draw.rectangle([0, 0, w, 20], fill=color)
-
+    # Градиент снизу (под текст)
     grad_h = 120
     for i in range(grad_h):
         alpha = int(200 * (i / grad_h))
         y = h - grad_h + i
         draw.rectangle([0, y, w, y + 1], fill=(0, 0, 0, alpha))
 
+    # Рамка поверх всего — 4 стороны
+    draw.rectangle([0, 0, w, border], fill=color)              # верх
+    draw.rectangle([0, h - border, w, h], fill=color)          # низ
+    draw.rectangle([0, 0, border, h], fill=color)              # лево
+    draw.rectangle([w - border, 0, w, h], fill=color)          # право
+
     font_label = get_font(28, bold=True)
     font_small = get_font(20, bold=False)
 
+    # Текст внутри рамки
     dot_y = h - 50
-    draw.ellipse([24, dot_y, 40, dot_y + 16], fill=color)
-    draw.text((50, h - 60), category, font=font_label, fill=(255, 255, 255, 240))
-    draw.text((w - 24, h - 55), CHANNEL_NAME, font=font_small,
+    draw.ellipse([border + 8, dot_y, border + 24, dot_y + 16], fill=color)
+    draw.text((border + 34, h - 60), category, font=font_label, fill=(255, 255, 255, 240))
+    draw.text((w - border - 8, h - 55), CHANNEL_NAME, font=font_small,
               fill=(255, 255, 255, 160), anchor="ra")
     if source:
         src = clean_source_name(source)
-        draw.text((24, h - 90), src, font=font_small, fill=(255, 255, 255, 140))
+        draw.text((border + 8, h - 90), src, font=font_small, fill=(255, 255, 255, 140))
     return img
 
 
