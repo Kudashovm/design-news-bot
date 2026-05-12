@@ -1015,12 +1015,8 @@ def run_pinterest_album(token, chat_id, weekday, state):
 
     day_cats = DAILY_CATEGORIES.get(weekday, [])
     tags = get_tags_for_categories(day_cats)
-    label = DAY_LABEL.get(weekday, "")
-    boards_used = list(dict.fromkeys(it["source"] for it in selected))
-    boards_str = " · ".join(boards_used[:3])
     caption = (
         f"<b>🎨 Визуальные референсы дня</b>\n\n"
-        f"<i>{html.escape(boards_str)} · {html.escape(label)}</i>\n"
         f"{html.escape(tags)}"
     )
 
@@ -1040,24 +1036,6 @@ def run_pinterest_album(token, chat_id, weekday, state):
 
     for item in used:
         state["sent"].append(item["id"])
-
-    # Авторы: собираем тех, у кого указан автор
-    credits = []
-    for item in used:
-        if item["author"]:
-            author = item["author"]
-            if author.startswith("http"):
-                credits.append(f'<a href="{author}">{html.escape(item["source"])}</a>')
-            else:
-                line = html.escape(author)
-                if item["link"]:
-                    line += f' · <a href="{item["link"]}">пин</a>'
-                credits.append(line)
-
-    if credits:
-        unique_credits = list(dict.fromkeys(credits))
-        credits_text = "✏️ " + " | ".join(unique_credits)
-        tg_send_text(token, chat_id, credits_text)
 
     print(f"  ✓ альбом из {len(used)} пинов")
     return True
@@ -1128,6 +1106,67 @@ def run_morning(token, chat_id, client, weekday, state):
 # ═══════════════════════════════════════════════════════════════
 #  ПЯТНИЧНОЕ САММАРИ НЕДЕЛИ
 # ═══════════════════════════════════════════════════════════════
+def generate_summary_card(title, top3, item_count):
+    """Генерирует карточку саммари: тёмный фон, рамка, заголовок, топ-3."""
+    try:
+        card_w, card_h = 1280, 720
+        bg_color = (18, 18, 22)
+        accent = (108, 113, 196)  # фиолетовый
+
+        img = Image.new("RGB", (card_w, card_h), bg_color)
+        draw = ImageDraw.Draw(img)
+
+        border = 20
+        # Рамка
+        draw.rectangle([0, 0, card_w, border], fill=accent)
+        draw.rectangle([0, card_h - border, card_w, card_h], fill=accent)
+        draw.rectangle([0, 0, border, card_h], fill=accent)
+        draw.rectangle([card_w - border, 0, card_w, card_h], fill=accent)
+
+        font_title = get_font(42, bold=True)
+        font_sub   = get_font(24, bold=False)
+        font_item  = get_font(26, bold=True)
+        font_desc  = get_font(20, bold=False)
+        font_small = get_font(18, bold=False)
+
+        # Заголовок
+        draw.text((border + 32, 50), title, font=font_title, fill=(255, 255, 255))
+        draw.text((border + 32, 105), f"{item_count} материалов за неделю",
+                  font=font_sub, fill=(160, 160, 170))
+
+        # Топ-3
+        y = 170
+        for i, item in enumerate(top3[:3]):
+            if y > card_h - 100:
+                break
+            name = item.get("name", "")[:55]
+            why  = item.get("why", "")[:80]
+
+            # Номер
+            num = f"{i + 1}"
+            draw.text((border + 32, y), num, font=font_title, fill=accent)
+            draw.text((border + 70, y + 5), name, font=font_item, fill=(255, 255, 255))
+            y += 40
+            if why:
+                draw.text((border + 70, y), why, font=font_desc, fill=(180, 180, 185))
+                y += 30
+            y += 25
+
+        # Подвал
+        draw.text((border + 32, card_h - 55), CHANNEL_NAME,
+                  font=font_small, fill=(120, 120, 125))
+        draw.text((card_w - border - 32, card_h - 55), "итоги недели",
+                  font=font_small, fill=(120, 120, 125), anchor="ra")
+
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=92)
+        buf.seek(0)
+        return buf.getvalue()
+    except Exception as e:
+        print(f"    генерация карточки саммари: {e}")
+        return None
+
+
 def format_summary_post(parsed):
     parts = [
         f"<b>📊 {html.escape(parsed['title'])}</b>",
@@ -1164,10 +1203,15 @@ def run_weekly_summary(token, chat_id, client, state):
         return False
 
     text = format_summary_post(parsed)
-    ok = tg_send_text(token, chat_id, text)
+    card = generate_summary_card(
+        parsed.get("title", "Итоги недели"),
+        parsed.get("top3", []),
+        len(weekly),
+    )
 
+    ok = post_to_telegram(token, chat_id, text, card)
     if ok:
-        state["weekly"] = []  # очищаем после публикации
+        state["weekly"] = []
         print("  ✓ саммари опубликовано")
         return True
     print("  ✗ ошибка отправки саммари")
