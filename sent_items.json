@@ -406,7 +406,32 @@
     "8044c4c65c495df00e092059e26e8997",
     "7e3401395db49139a4c10ff6c2c79d3a",
     "95401338e23fad496c042a1668595376",
-    "dd6a6281d83d5eb2a9203bcf36f91107"
+    "dd6a6281d83d5eb2a9203bcf36f91107",
+    "91bb4095408a38bde09adda0836b6ee9",
+    "d961195e7521772e23dac278b90cc658",
+    "6c2fd07a97c18b54e56032fabf71d5ff",
+    "4cf51dab27fd9384cc0180924bc00551",
+    "2ac61d9b13f826207ca64450dd55d939",
+    "c2317db3cea07256fea55ac7591ff6a3",
+    "791cbe178807039dc3f17d55ec91a74a",
+    "eee72a340ee716032cc7fc7132476ab6",
+    "1d6d8ae1c47dca4feab1f1a506ff2463",
+    "3eb6156ec90c0fc4b929e64357c18557",
+    "15a16f1a1788f5860605cbfe31fc210f",
+    "b7bf9713624b4afdab04d1a985dbf18c",
+    "cc68253878b9003263ed6764849fcee7",
+    "e7b214ec50d0a6d8448cbb430bf07395",
+    "8533edcfa2387b42831a286ff81d9f0f",
+    "37be69253128cae000f10f1aa61f48c9",
+    "8fc4b0f392fb3171fd3a438d16f89c47",
+    "91db821edb9f7166f13d882f5ccccc50",
+    "cad587ff6c25a4352d7fb022880fc358",
+    "d596bf8abde4a75adc235dcd08de6c05",
+    "e55be4b64085a5f58c4ab95fe6741053",
+    "d66ae449a863ce6938d2a24066581941",
+    "cfa16e74eb0805d446747382ca5d29c9",
+    "43f5e43a4b603c06c00f3a8ee92637e5",
+    "131a17a23486d0eec30f028acebe1b07"
   ],
   "initialized": true,
   "weekly": [
@@ -415,6 +440,12 @@
       "source": "Nick Vinny",
       "category": "Брендинг и граф дизайн",
       "link": "https://www.instagram.com/p/DYZR06OulR3"
+    },
+    {
+      "title": "Выставки женщин-художниц растут, коллекции — нет",
+      "source": "The Blueprint",
+      "category": "Искусство",
+      "link": "https://theblueprint.ru/culture/art/zenskie-vystavki"
     }
   ]
 }
