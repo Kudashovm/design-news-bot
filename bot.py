@@ -168,31 +168,6 @@ DAY_LABEL = {
     5: "Разбор проекта",
 }
 
-CATEGORY_HASHTAGS = {
-    "Типографика":               "#типографика #шрифты",
-    "Брендинг и граф дизайн":    "#брендинг #графдизайн #айдентика",
-    "Интерфейсы":                "#интерфейсы #ux #ui",
-    "Пром дизайн":               "#промдизайн #индустриальныйдизайн",
-    "3D и моушен":               "#3d #моушен #анимация",
-    "Студии и блоги":            "#дизайнстудии #креатив",
-    "Искусство":                 "#искусство #арт",
-    "ИИ в дизайне":              "#ии #нейросети #дизайн",
-    "Москва события":            "#москва #выставки #дизайнсобытия",
-}
-
-
-def get_tags_for_categories(categories):
-    """Собирает хэштеги из нескольких категорий без дублей."""
-    all_tags = []
-    seen = set()
-    for cat in categories:
-        tags_str = CATEGORY_HASHTAGS.get(cat, "")
-        for tag in tags_str.split():
-            if tag and tag not in seen:
-                seen.add(tag)
-                all_tags.append(tag)
-    return " ".join(all_tags)
-
 CATEGORY_COLOR = {
     "Типографика":               (220, 50, 47),
     "Брендинг и граф дизайн":    (211, 54, 130),
@@ -209,7 +184,7 @@ CATEGORY_COLOR = {
 #  ПАРАМЕТРЫ
 # ═══════════════════════════════════════════════════════════════
 STATE_FILE      = "sent_items.json"
-MAX_AGE_HOURS   = 48
+MAX_AGE_HOURS   = 168     # 7 дней — студийные каналы обновляются редко
 HISTORY_LIMIT   = 3000
 USER_AGENT      = "Mozilla/5.0 (compatible; DesignNewsBot/1.0)"
 CLAUDE_MODEL    = "claude-haiku-4-5"
@@ -473,18 +448,28 @@ def collect_candidates(categories, state):
     max_age = MAX_AGE_HOURS * 3600
     candidates = []
     for category in categories:
-        for source_name, feed_url in SOURCES.get(category, []):
+        sources = SOURCES.get(category, [])
+        if not sources:
+            print(f"  [{category}] — нет источников")
+            continue
+        for source_name, feed_url in sources:
             try:
                 feed = feedparser.parse(feed_url, request_headers={"User-Agent": USER_AGENT})
-                for entry in (feed.entries or [])[:8]:
+                entries = feed.entries or []
+                new_count = 0
+                old_count = 0
+                dup_count = 0
+                for entry in entries[:8]:
                     item_id = entry.get("id") or entry.get("link")
                     if not item_id or item_id in sent_ids:
+                        dup_count += 1
                         continue
                     pub = entry.get("published_parsed") or entry.get("updated_parsed")
                     pub_ts = time.mktime(pub) if pub else now
                     if now - pub_ts > max_age:
                         sent_ids.add(item_id)
                         state["sent"].append(item_id)
+                        old_count += 1
                         continue
                     summary = entry.get("summary", "") or ""
                     if isinstance(summary, list):
@@ -498,8 +483,11 @@ def collect_candidates(categories, state):
                         "summary": clean_text(re.sub(r"<[^>]+>", " ", summary))[:2000],
                         "ts": pub_ts,
                     })
+                    new_count += 1
+                total = len(entries)
+                print(f"  {source_name:<24} всего:{total} новых:{new_count} дубли:{dup_count} старых:{old_count}")
             except Exception as e:
-                print(f"  ошибка {source_name}: {e}")
+                print(f"  ✗ {source_name}: {e}")
     candidates.sort(key=lambda x: x["ts"], reverse=True)
     return candidates
 
@@ -682,7 +670,6 @@ def call_claude(client, prompt):
 # ═══════════════════════════════════════════════════════════════
 def format_regular_post(weekday, category, source, parsed, link):
     label = DAY_LABEL.get(weekday, "")
-    tags  = CATEGORY_HASHTAGS.get(category, "")
     trend = parsed.get("trend", "").strip()
 
     parts = [
@@ -695,7 +682,6 @@ def format_regular_post(weekday, category, source, parsed, link):
     parts += [
         "",
         f"<i>{html.escape(clean_source_name(source))} · {html.escape(label)}</i>",
-        html.escape(tags),
         "",
         f'🔗 <a href="{link}">Источник</a>',
     ]
@@ -703,7 +689,6 @@ def format_regular_post(weekday, category, source, parsed, link):
 
 
 def format_saturday_post(category, source, parsed, link):
-    tags = CATEGORY_HASHTAGS.get(category, "#разбор #дизайн")
     return "\n".join([
         f"<b>🔍 {html.escape(parsed['title'])}</b>",
         "",
@@ -716,7 +701,6 @@ def format_saturday_post(category, source, parsed, link):
         f"🔑 <b>Украсть:</b> {html.escape(parsed['steal'])}",
         "",
         f"<i>{html.escape(clean_source_name(source))} · Разбор</i>",
-        html.escape(tags),
         "",
         f'🔗 <a href="{link}">Источник</a>',
     ])
@@ -724,8 +708,6 @@ def format_saturday_post(category, source, parsed, link):
 
 def format_digest_post(weekday, parsed, items_data):
     label = DAY_LABEL.get(weekday, "")
-    cats  = list(dict.fromkeys(it.get("category", "") for it in items_data))
-    tags  = get_tags_for_categories(cats)
     trend = parsed.get("trend", "").strip()
 
     parts = [f"<b>📋 {html.escape(parsed['title'])}</b>", ""]
@@ -741,7 +723,6 @@ def format_digest_post(weekday, parsed, items_data):
         parts.append(f"📎 {html.escape(trend)}")
         parts.append("")
     parts.append(f"<i>{html.escape(label)}</i>")
-    parts.append(html.escape(tags))
     return "\n".join(parts)
 
 
@@ -756,7 +737,6 @@ def format_friday_post(parsed, events):
             + (f'\n🔗 <a href="{link}">Подробнее</a>' if link else "")
         )
         parts.append("")
-    parts.append(html.escape(CATEGORY_HASHTAGS.get("Москва события", "")))
     return "\n".join(parts)
 
 
@@ -802,34 +782,6 @@ def post_to_telegram(token, chat_id, text, image_bytes=None):
     return tg_send_text(token, chat_id, text)
 
 
-def tg_send_media_group(token, chat_id, images_bytes, caption=""):
-    """Отправляет альбом из нескольких картинок. caption — на первой."""
-    if not images_bytes:
-        return False
-    try:
-        media = []
-        files = {}
-        for i, img_bytes in enumerate(images_bytes):
-            file_key = f"photo_{i}"
-            files[file_key] = (f"{file_key}.jpg", img_bytes, "image/jpeg")
-            entry = {"type": "photo", "media": f"attach://{file_key}"}
-            if i == 0 and caption:
-                cap = caption if len(caption) <= 1024 else caption[:1020] + "..."
-                entry["caption"] = cap
-                entry["parse_mode"] = "HTML"
-            media.append(entry)
-        r = requests.post(
-            f"https://api.telegram.org/bot{token}/sendMediaGroup",
-            data={"chat_id": chat_id, "media": json.dumps(media)},
-            files=files,
-            timeout=60,
-        )
-        if r.ok:
-            return True
-        print(f"    sendMediaGroup: {r.text[:200]}")
-    except Exception as e:
-        print(f"    sendMediaGroup: {e}")
-    return False
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1014,11 +966,8 @@ def run_pinterest_album(token, chat_id, weekday, state):
     selected = pinterest_items[:PINTEREST_ALBUM_SIZE]
 
     day_cats = DAILY_CATEGORIES.get(weekday, [])
-    tags = get_tags_for_categories(day_cats)
-    caption = (
-        f"<b>🎨 Визуальные референсы дня</b>\n\n"
-        f"{html.escape(tags)}"
-    )
+    label = DAY_LABEL.get(weekday, "")
+    caption = f"<b>🎨 Визуальные референсы дня</b>\n\n<i>{html.escape(label)}</i>"
 
     # Готовим медиа — отправляем как есть, без кропа
     media_for_tg = []
@@ -1177,8 +1126,6 @@ def format_summary_post(parsed):
     ]
     for i, item in enumerate(parsed.get("top3", []), 1):
         parts.append(f"{i}. <b>{html.escape(item['name'])}</b> — {html.escape(item['why'])}")
-    parts.append("")
-    parts.append("#итогинедели #дизайн")
     return "\n".join(parts)
 
 
