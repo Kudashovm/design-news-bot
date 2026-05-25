@@ -455,7 +455,18 @@
     "e3d058eee764a65c01d7ddc889158f8c",
     "6248b0615781f7f8ce6d7aa785bf08fb",
     "19cd678ee1f0a6637c09f5878bc7a31e",
-    "63047b0b539b0482e51470c362d3e280"
+    "63047b0b539b0482e51470c362d3e280",
+    "a8d3d1430e789810c345d376190ea66d",
+    "bd4d1542375521b4f1e41e7d61052d28",
+    "2208059d1f15d0f4019808ce4ffc2ef6",
+    "fc0d3c3dc98ee98df35522478972c16f",
+    "7506a10554758f32c849474ee9505916",
+    "74e95e516b576e87e4cd44e57cb76e40",
+    "885929d4ba2c06f25cdc7aabdf6450ab",
+    "dfef1338ab2b21dd69ee95c7c7029733",
+    "9d46a24c9bf36c094fc3fa2fd334d31f",
+    "adcfd92d28bc0d825c86ca7ccd60e486",
+    "69782e3623d7d1043d52ae7914652588"
   ],
   "initialized": true,
   "weekly": [
@@ -470,6 +481,12 @@
       "source": "The Blueprint",
       "category": "Искусство",
       "link": "https://theblueprint.ru/culture/art/zenskie-vystavki"
+    },
+    {
+      "title": "Моторика переделала айдентику через биомеханику, а не диагноз",
+      "source": "Состав",
+      "category": "Брендинг и граф дизайн",
+      "link": "https://www.sostav.ru/publication/gruppa-motorika-obyavila-o-rebrendinge-84035.html"
     }
   ]
 }
