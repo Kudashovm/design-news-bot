@@ -669,7 +669,6 @@ def call_claude(client, prompt):
 #  ФОРМАТИРОВАНИЕ
 # ═══════════════════════════════════════════════════════════════
 def format_regular_post(weekday, category, source, parsed, link):
-    label = DAY_LABEL.get(weekday, "")
     trend = parsed.get("trend", "").strip()
 
     parts = [
@@ -680,8 +679,6 @@ def format_regular_post(weekday, category, source, parsed, link):
     if trend:
         parts += ["", f"📎 {html.escape(trend)}"]
     parts += [
-        "",
-        f"<i>{html.escape(clean_source_name(source))} · {html.escape(label)}</i>",
         "",
         f'🔗 <a href="{link}">Источник</a>',
     ]
@@ -700,14 +697,11 @@ def format_saturday_post(category, source, parsed, link):
         "",
         f"🔑 <b>Украсть:</b> {html.escape(parsed['steal'])}",
         "",
-        f"<i>{html.escape(clean_source_name(source))} · Разбор</i>",
-        "",
         f'🔗 <a href="{link}">Источник</a>',
     ])
 
 
 def format_digest_post(weekday, parsed, items_data):
-    label = DAY_LABEL.get(weekday, "")
     trend = parsed.get("trend", "").strip()
 
     parts = [f"<b>📋 {html.escape(parsed['title'])}</b>", ""]
@@ -722,7 +716,6 @@ def format_digest_post(weekday, parsed, items_data):
     if trend:
         parts.append(f"📎 {html.escape(trend)}")
         parts.append("")
-    parts.append(f"<i>{html.escape(label)}</i>")
     return "\n".join(parts)
 
 
