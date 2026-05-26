@@ -472,7 +472,13 @@
     "811bc37249dedc7fdc94f24298bdff67",
     "28650d06685f6ce40183638ede2a00de",
     "548e59b47c0117c9b6bfccb2b42ad4b4",
-    "48a269af32c4179398d14bd0ba1cec67"
+    "48a269af32c4179398d14bd0ba1cec67",
+    "2ac1ce89e3984f1c5f39139d72373720",
+    "9552849ed760e3dc20d2b96b5a7c73a3",
+    "76f8c1b0ac419152019add6ab4f459e3",
+    "345818066be928b2eb49715ae76643c6",
+    "9d61c0338e15e7969587b21c3fb1c2ad",
+    "85c4625712a0b58cd3b1ce9cdfbc64e7"
   ],
   "initialized": true,
   "weekly": [
@@ -493,6 +499,12 @@
       "source": "Состав",
       "category": "Брендинг и граф дизайн",
       "link": "https://www.sostav.ru/publication/gruppa-motorika-obyavila-o-rebrendinge-84035.html"
+    },
+    {
+      "title": "Cartier сделал сайт часов как музей, а не каталог",
+      "source": "Awwwards",
+      "category": "Интерфейсы",
+      "link": "https://www.awwwards.com/sites/cartier-watches-wonders-2026"
     }
   ]
 }
