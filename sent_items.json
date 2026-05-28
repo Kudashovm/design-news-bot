@@ -490,7 +490,10 @@
     "214155e301d57e95796735cbc3150474",
     "929a5d00b145eea0c67d8b52b6e92759",
     "e52a43b926a3aa4686cac9bfb631fcc3",
-    "a1c7fbc1b795ef60151ba49b7c1c6727"
+    "a1c7fbc1b795ef60151ba49b7c1c6727",
+    "7ad260529df3a31013b81db1a73c50a9",
+    "80a8ca884c03ada937222f559dcbb5cb",
+    "https://www.theverge.com/?p=938759"
   ],
   "initialized": true,
   "weekly": [
@@ -517,6 +520,12 @@
       "source": "Awwwards",
       "category": "Интерфейсы",
       "link": "https://www.awwwards.com/sites/cartier-watches-wonders-2026"
+    },
+    {
+      "title": "YouTube отдал кураторство пользователю через промпт",
+      "source": "The Verge AI",
+      "category": "ИИ в дизайне",
+      "link": "https://www.theverge.com/streaming/938759/youtube-custom-ai-feed-prompt-availability"
     }
   ]
 }
