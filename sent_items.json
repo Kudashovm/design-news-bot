@@ -511,7 +511,24 @@
     "5081feeb1f3d2f605350911b60265f16",
     "f0b2dc92adce48d093661c91d6018936",
     "0dfe5f2e0f818a534cd84932912487f3",
-    "9224380ba68ed6a9fd62a701d95cb228"
+    "9224380ba68ed6a9fd62a701d95cb228",
+    "10179f0e7ca9356cbeb34e22bdad0451",
+    "c85e3aa915c7371476ea8f8889af5f61",
+    "d93fe94a3f471250d6f34f2e0105821a",
+    "5f4282cd0b0a92dfc90040ada89647da",
+    "cd4fca8f1e62268e606727f7fed909b6",
+    "cc35a708bfd0f8253dc89b00bd0c0562",
+    "488770e826a7e6808c63e5acf8eb1add",
+    "6637fe59613fcb3da1a62d1808039d87",
+    "ef4f79bfb42af5e613f577199096f116",
+    "304aa1bd35cc4f255852b052769434d0",
+    "3f3e96e8bd1b006cb9828cf62589246f",
+    "a2a8f85a603217529bf1ca2dd641e6b3",
+    "4ecbe905893a2f31c018fdfeab630904",
+    "b95eb91e006752f6122891cedb6f0bc1",
+    "05ee3f704b15aa60907198a457b13427",
+    "70d7455449c669d0874ed2d38a2f611c",
+    "eb3b0faac71dac7dcab682a39f49021a"
   ],
   "initialized": true,
   "weekly": [
@@ -544,6 +561,12 @@
       "source": "The Verge AI",
       "category": "ИИ в дизайне",
       "link": "https://www.theverge.com/streaming/938759/youtube-custom-ai-feed-prompt-availability"
+    },
+    {
+      "title": "Дизайн окупается раньше, чем реклама",
+      "source": "Состав",
+      "category": "Брендинг и граф дизайн",
+      "link": "https://www.sostav.ru/publication/firmennyj-stil-kak-investitsiya-pochemu-dizajn-okupaetsya-bystree-marketinga-84232.html"
     }
   ]
 }
