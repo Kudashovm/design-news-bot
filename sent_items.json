@@ -528,7 +528,11 @@
     "b95eb91e006752f6122891cedb6f0bc1",
     "05ee3f704b15aa60907198a457b13427",
     "70d7455449c669d0874ed2d38a2f611c",
-    "eb3b0faac71dac7dcab682a39f49021a"
+    "eb3b0faac71dac7dcab682a39f49021a",
+    "ef998184ab290b60c66190f762a4bca3",
+    "eb0a10ed96ff903577cdf3ae5a19dd24",
+    "c43ae538f721e41a2650c35bebd51a93",
+    "28cb9eb1c963f0d3ec647363627d1f9d"
   ],
   "initialized": true,
   "weekly": [
@@ -567,6 +571,12 @@
       "source": "Состав",
       "category": "Брендинг и граф дизайн",
       "link": "https://www.sostav.ru/publication/firmennyj-stil-kak-investitsiya-pochemu-dizajn-okupaetsya-bystree-marketinga-84232.html"
+    },
+    {
+      "title": "Figma запустит хакатон с доступом к своему AI-агенту",
+      "source": "Figma",
+      "category": "Интерфейсы",
+      "link": "https://www.instagram.com/p/DZDjBXIP1gi"
     }
   ]
 }
