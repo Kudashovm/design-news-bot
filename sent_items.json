@@ -542,7 +542,10 @@
     "be577287f2f6d35c960efc30091a20f4",
     "950801623b8767d0e16a7dd51f906063",
     "246fb07247f1ebb3a03a5d30904a7426",
-    "e380121ac73e8bc7ca266dc33ef9dd11"
+    "e380121ac73e8bc7ca266dc33ef9dd11",
+    "1611da92e92c3cdd0638c90a6d11997a",
+    "80108074b3cd9085190da040d0dec585",
+    "https://www.theverge.com/?p=942884"
   ],
   "initialized": true,
   "weekly": [
@@ -587,6 +590,12 @@
       "source": "Figma",
       "category": "Интерфейсы",
       "link": "https://www.instagram.com/p/DZDjBXIP1gi"
+    },
+    {
+      "title": "Amazon научил робота понимать человеческий язык",
+      "source": "The Verge AI",
+      "category": "ИИ в дизайне",
+      "link": "https://www.theverge.com/ai-artificial-intelligence/942884/amazon-next-generation-warehouse-robot-proteus"
     }
   ]
 }
