@@ -545,57 +545,21 @@
     "e380121ac73e8bc7ca266dc33ef9dd11",
     "1611da92e92c3cdd0638c90a6d11997a",
     "80108074b3cd9085190da040d0dec585",
-    "https://www.theverge.com/?p=942884"
+    "https://www.theverge.com/?p=942884",
+    "https://kudago.com/msk/event/vyistavka-son-sebya-ne-pomnit/",
+    "https://kudago.com/msk/event/vyistavka-dvoe/",
+    "https://kudago.com/msk/event/vyistavka-fantiki/",
+    "https://kudago.com/msk/event/vyistavka-mihail-bulgakov-i-vladimir-volk-dialog-o-zakatnom-romane/",
+    "https://kudago.com/msk/event/vyistavka-ugolok-hudozhnika/",
+    "https://kudago.com/msk/event/vyistavka-nachalo-puti/",
+    "https://kudago.com/msk/event/vyistavka-hrupkie-sekretyi/",
+    "https://kudago.com/msk/event/vyistavka-dnevnik-nablyudenij/",
+    "https://t.me/sale_caviar/17668",
+    "https://t.me/sale_caviar/17667",
+    "https://t.me/sale_caviar/17666",
+    "https://t.me/sale_caviar/17665",
+    "https://t.me/sale_caviar/17660"
   ],
   "initialized": true,
-  "weekly": [
-    {
-      "title": "Обложка как портрет художника",
-      "source": "Nick Vinny",
-      "category": "Брендинг и граф дизайн",
-      "link": "https://www.instagram.com/p/DYZR06OulR3"
-    },
-    {
-      "title": "Выставки женщин-художниц растут, коллекции — нет",
-      "source": "The Blueprint",
-      "category": "Искусство",
-      "link": "https://theblueprint.ru/culture/art/zenskie-vystavki"
-    },
-    {
-      "title": "Моторика переделала айдентику через биомеханику, а не диагноз",
-      "source": "Состав",
-      "category": "Брендинг и граф дизайн",
-      "link": "https://www.sostav.ru/publication/gruppa-motorika-obyavila-o-rebrendinge-84035.html"
-    },
-    {
-      "title": "Cartier сделал сайт часов как музей, а не каталог",
-      "source": "Awwwards",
-      "category": "Интерфейсы",
-      "link": "https://www.awwwards.com/sites/cartier-watches-wonders-2026"
-    },
-    {
-      "title": "YouTube отдал кураторство пользователю через промпт",
-      "source": "The Verge AI",
-      "category": "ИИ в дизайне",
-      "link": "https://www.theverge.com/streaming/938759/youtube-custom-ai-feed-prompt-availability"
-    },
-    {
-      "title": "Дизайн окупается раньше, чем реклама",
-      "source": "Состав",
-      "category": "Брендинг и граф дизайн",
-      "link": "https://www.sostav.ru/publication/firmennyj-stil-kak-investitsiya-pochemu-dizajn-okupaetsya-bystree-marketinga-84232.html"
-    },
-    {
-      "title": "Figma запустит хакатон с доступом к своему AI-агенту",
-      "source": "Figma",
-      "category": "Интерфейсы",
-      "link": "https://www.instagram.com/p/DZDjBXIP1gi"
-    },
-    {
-      "title": "Amazon научил робота понимать человеческий язык",
-      "source": "The Verge AI",
-      "category": "ИИ в дизайне",
-      "link": "https://www.theverge.com/ai-artificial-intelligence/942884/amazon-next-generation-warehouse-robot-proteus"
-    }
-  ]
+  "weekly": []
 }
