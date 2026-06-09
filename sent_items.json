@@ -596,7 +596,22 @@
     "270f45fef8f7d778eff292443cba4510",
     "ce40bfc45754d4f2cee892570a2b6988",
     "4b1282692d17ced19ff0ec72a37f1522",
-    "29a6e74ef6a1a8483adaad8b210780b3"
+    "29a6e74ef6a1a8483adaad8b210780b3",
+    "faab3ea6b4fb738a4196f0b781222643",
+    "9d65478319220ff5cd26f30646cb9a49",
+    "4d96ba067c14cc9d4a3479d9fed686bd",
+    "009901c1aac7f7d9e4869d98a8c64e1a",
+    "1b461b87ce297670bfa9c10165a8e349",
+    "4028d85e12df719a8d4075b03fcbf5f5",
+    "55b3504f3f8f141c0ef0ac1b424c911a",
+    "339d63118dac3f8f2cf941e87207bc67",
+    "4dc72ed1c9e3a9f0664401422b9bacbc",
+    "a247a1bb35c9d6fd89471effc6da9303",
+    "56d19a117ea4eb4e9a529ed74b6e85aa",
+    "97d208f9759e8c07564e9d21426953dd",
+    "91b817c0e811acbc11261e427cc9ccb9",
+    "2c0228aee3768a05443195ed50406592",
+    "4634a4b690e9d68ad5cee082f3d4de4a"
   ],
   "initialized": true,
   "weekly": [
@@ -605,6 +620,12 @@
       "source": "Enigma",
       "category": "Студии и блоги",
       "link": "https://www.instagram.com/p/DZOTyyVDhSi"
+    },
+    {
+      "title": "Структурированный макет продаёт лучше, чем красота",
+      "source": "Awwwards",
+      "category": "Интерфейсы",
+      "link": "https://www.awwwards.com/market/product_6a24254143177661733409"
     }
   ]
 }
