@@ -630,27 +630,21 @@
     "349f0a910402530b055e2160dfda231f",
     "d32ab2644f8cd5cd6ec5b9fd1e121c1b",
     "3d65bb0d6c7e46ba5fb3d927699f31ab",
-    "e8190fd555f2f0736619ec06a83bec11"
+    "e8190fd555f2f0736619ec06a83bec11",
+    "https://kudago.com/msk/event/vyistavka-iskusstvo-obmana-jfhdyc/",
+    "https://kudago.com/msk/event/vyistavka-kak-ohra-stala-krasnoj/",
+    "https://kudago.com/msk/event/vyistavka-usadebnyij-vek/",
+    "https://kudago.com/msk/event/vyistavka-predshestvenniki-pavla-tretyakova-fyodor-pryanishnikov-i-kozma-soldatyonkov-fhmdte/",
+    "https://kudago.com/msk/event/vyistavka-madonnyi-renessansa-iz-chastnyih-sobranij/",
+    "https://kudago.com/msk/event/vyistavka-svetit-vsegda-svetit-vezde/",
+    "https://kudago.com/msk/event/vyistavka-poslednyaya-kaplya/",
+    "https://kudago.com/msk/event/vyistavka-tri-korovyi-pyat-sobak-i-ostalnoj-mir/",
+    "https://t.me/sale_caviar/17785",
+    "https://t.me/sale_caviar/17784",
+    "https://t.me/sale_caviar/17783",
+    "https://t.me/sale_caviar/17782",
+    "https://t.me/sale_caviar/17781"
   ],
   "initialized": true,
-  "weekly": [
-    {
-      "title": "Elmgreen & Dragset превратили брак в архитектуру",
-      "source": "Enigma",
-      "category": "Студии и блоги",
-      "link": "https://www.instagram.com/p/DZOTyyVDhSi"
-    },
-    {
-      "title": "Структурированный макет продаёт лучше, чем красота",
-      "source": "Awwwards",
-      "category": "Интерфейсы",
-      "link": "https://www.awwwards.com/market/product_6a24254143177661733409"
-    },
-    {
-      "title": "Третьяков начал с подделок и выбрал русское",
-      "source": "The Blueprint",
-      "category": "Искусство",
-      "link": "https://theblueprint.ru/culture/art/tretiakov-%D1%81ollection"
-    }
-  ]
+  "weekly": []
 }
