@@ -722,7 +722,14 @@
     "99f2f964a31841de200d63cdf3d24db2",
     "72ac321f12655cd0c6c80cffa683cbb2",
     "0b0283c7f0e2af2145049eac26c33f64",
-    "18846481aabf2abff94d89c6061a7857"
+    "18846481aabf2abff94d89c6061a7857",
+    "55f1cfd358f1ad2621da9cca5ec842cf",
+    "40406fcd82a32bbe47f5faac64cfae5c",
+    "70d58bcc5ff0e8c27f38c2867a7acd3e",
+    "de4533a6b69260e7f8cc990948cfe580",
+    "da9f0fb0ea9fd9b3db4b236546bd86f9",
+    "eebe84dfe7e98d0c2106f24139b32134",
+    "dec6f4284384383ed772a324c5b635ff"
   ],
   "initialized": true,
   "weekly": [
@@ -737,6 +744,12 @@
       "source": "Davar Azarbeygui",
       "category": "Студии и блоги",
       "link": "https://www.linkedin.com/posts/dazarbeygui_branding-nyknicks-marketing-activity-7473824251934904321-zp8j"
+    },
+    {
+      "title": "ASCII вместо скриншотов: как выглядит техничность в 2024",
+      "source": "Awwwards",
+      "category": "Интерфейсы",
+      "link": "https://www.awwwards.com/market/product_6a38e4231e823605458602"
     }
   ]
 }
