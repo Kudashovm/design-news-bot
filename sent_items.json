@@ -729,7 +729,18 @@
     "de4533a6b69260e7f8cc990948cfe580",
     "da9f0fb0ea9fd9b3db4b236546bd86f9",
     "eebe84dfe7e98d0c2106f24139b32134",
-    "dec6f4284384383ed772a324c5b635ff"
+    "dec6f4284384383ed772a324c5b635ff",
+    "cbffc6792d1149298283eb711bdcc57e",
+    "df572f4ab5335743c8caeefc0414abb7",
+    "44dfe10f9959c19e6a5e68a0194323b6",
+    "21f3da8a2f84918971645ce6a593da2d",
+    "0bc5a2c20adff3017b96f891306cab16",
+    "503800510281d319b312b9f8b1e51268",
+    "732ff4458dcb3b10ce50e5cc335c52d9",
+    "2a64dfd1c7f487d7e2e05df9ab1cedc9",
+    "16108bf8084f2065acd0972c29fc1d89",
+    "e0116f2fe5ea850200bce945e1445d5a",
+    "3206d95398faecef37f3eb9c56b05543"
   ],
   "initialized": true,
   "weekly": [
@@ -750,6 +761,12 @@
       "source": "Awwwards",
       "category": "Интерфейсы",
       "link": "https://www.awwwards.com/market/product_6a38e4231e823605458602"
+    },
+    {
+      "title": "Школа без правил работает лучше академии с уставом",
+      "source": "The Blueprint",
+      "category": "Искусство",
+      "link": "https://theblueprint.ru/culture/art/zvantseva-school"
     }
   ]
 }
