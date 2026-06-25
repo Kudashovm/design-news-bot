@@ -740,7 +740,9 @@
     "2a64dfd1c7f487d7e2e05df9ab1cedc9",
     "16108bf8084f2065acd0972c29fc1d89",
     "e0116f2fe5ea850200bce945e1445d5a",
-    "3206d95398faecef37f3eb9c56b05543"
+    "3206d95398faecef37f3eb9c56b05543",
+    "1e21a4d39d9a39dc8b2709ecab4fdae7",
+    "https://www.theverge.com/?p=956668"
   ],
   "initialized": true,
   "weekly": [
@@ -767,6 +769,12 @@
       "source": "The Blueprint",
       "category": "Искусство",
       "link": "https://theblueprint.ru/culture/art/zvantseva-school"
+    },
+    {
+      "title": "Meta вернул Creator Studio, но теперь это AI-помощник",
+      "source": "The Verge AI",
+      "category": "ИИ в дизайне",
+      "link": "https://www.theverge.com/tech/956668/meta-facebook-creator-studio-ai-app-relaunch"
     }
   ]
 }
