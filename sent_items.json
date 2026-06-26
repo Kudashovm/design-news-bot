@@ -742,39 +742,21 @@
     "e0116f2fe5ea850200bce945e1445d5a",
     "3206d95398faecef37f3eb9c56b05543",
     "1e21a4d39d9a39dc8b2709ecab4fdae7",
-    "https://www.theverge.com/?p=956668"
+    "https://www.theverge.com/?p=956668",
+    "https://kudago.com/msk/event/vyistavka-sense-geometriya-chuvstv/",
+    "https://kudago.com/msk/event/vyistavka-otkinutsya-na-spinku-stula/",
+    "https://kudago.com/msk/event/vyistavka-zov-beluhi-po-puti-reriha/",
+    "https://kudago.com/msk/event/vyistavka-zazerkale/",
+    "https://kudago.com/msk/event/vyistavka-arhivnaya-materiya/",
+    "https://kudago.com/msk/event/vyistavka-nesovetskij-chelovek/",
+    "https://kudago.com/msk/event/vyistavka-po-puti-zhivopis-nadezhdyi-krestininoj/",
+    "https://kudago.com/msk/event/vyistavka-skazhi---sladko/",
+    "https://t.me/sale_caviar/17934",
+    "https://t.me/sale_caviar/17933",
+    "https://t.me/sale_caviar/17931",
+    "https://t.me/sale_caviar/17930",
+    "https://t.me/sale_caviar/17929"
   ],
   "initialized": true,
-  "weekly": [
-    {
-      "title": "Lara Bohinc сделала стул из противоречий",
-      "source": "Enigma",
-      "category": "Студии и блоги",
-      "link": "https://www.instagram.com/p/DZf-YB2GFW0"
-    },
-    {
-      "title": "Knicks переделали логотип в букву города",
-      "source": "Davar Azarbeygui",
-      "category": "Студии и блоги",
-      "link": "https://www.linkedin.com/posts/dazarbeygui_branding-nyknicks-marketing-activity-7473824251934904321-zp8j"
-    },
-    {
-      "title": "ASCII вместо скриншотов: как выглядит техничность в 2024",
-      "source": "Awwwards",
-      "category": "Интерфейсы",
-      "link": "https://www.awwwards.com/market/product_6a38e4231e823605458602"
-    },
-    {
-      "title": "Школа без правил работает лучше академии с уставом",
-      "source": "The Blueprint",
-      "category": "Искусство",
-      "link": "https://theblueprint.ru/culture/art/zvantseva-school"
-    },
-    {
-      "title": "Meta вернул Creator Studio, но теперь это AI-помощник",
-      "source": "The Verge AI",
-      "category": "ИИ в дизайне",
-      "link": "https://www.theverge.com/tech/956668/meta-facebook-creator-studio-ai-app-relaunch"
-    }
-  ]
+  "weekly": []
 }
