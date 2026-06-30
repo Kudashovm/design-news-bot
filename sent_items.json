@@ -779,7 +779,13 @@
     "74abc146116e9d02c33aab6bd7f21218",
     "5d79c84379ab764e76f7bad4a612ff02",
     "07c1b56bd133c8b4d7a083129f49c004",
-    "5c2f1719a63380c5b2634fd73b521ea5"
+    "5c2f1719a63380c5b2634fd73b521ea5",
+    "6984d5eee779fb3d18b99bd507a3f0b2",
+    "bf807e0725890c8e29ba32054e286f36",
+    "d9b13a69a8a0e879ffaeb18bdfdfc684",
+    "27eab29874596465fa2f30625636ed8a",
+    "7b81d776fa4fc5f964b5be68828690f0",
+    "ea44dbfe1e438cf0b84065b4b30aead8"
   ],
   "initialized": true,
   "weekly": [
@@ -788,6 +794,12 @@
       "source": "Figma",
       "category": "Брендинг и граф дизайн",
       "link": "https://www.instagram.com/p/DaEYtShPFG5"
+    },
+    {
+      "title": "Sevora показывает, как портфолио работает в Framer",
+      "source": "Awwwards",
+      "category": "Интерфейсы",
+      "link": "https://www.awwwards.com/market/product_6a3fd08f65e83316378378"
     }
   ]
 }
