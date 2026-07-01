@@ -785,7 +785,14 @@
     "d9b13a69a8a0e879ffaeb18bdfdfc684",
     "27eab29874596465fa2f30625636ed8a",
     "7b81d776fa4fc5f964b5be68828690f0",
-    "ea44dbfe1e438cf0b84065b4b30aead8"
+    "ea44dbfe1e438cf0b84065b4b30aead8",
+    "2c5b025cb8133794f6d2a8140b6d2b8b",
+    "a5ea04ed596e1d079db95109deef82ac",
+    "4661b2380f9d44d8219f9f13552d2575",
+    "f5ac06cfe8aafe527a8208505c0fbd54",
+    "534a0bd03d8b6bfd7b7e8b546c73c63c",
+    "c1e7b729b57b433992cf2fdd33353ee1",
+    "2dc7a0fdf68876c46f7d2d0d8a89c4e6"
   ],
   "initialized": true,
   "weekly": [
@@ -800,6 +807,12 @@
       "source": "Awwwards",
       "category": "Интерфейсы",
       "link": "https://www.awwwards.com/market/product_6a3fd08f65e83316378378"
+    },
+    {
+      "title": "Икона вместо мавзолея: как показывать Фриду в 2026",
+      "source": "The Blueprint",
+      "category": "Искусство",
+      "link": "https://theblueprint.ru/culture/art/frida-tate"
     }
   ]
 }
